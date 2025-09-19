@@ -1874,3 +1874,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   .timeline-text { max-width: 700px; }
 
 }
+  .timeline-text { max-width: 700px; }
+
+}
+@media (max-width: 768px) {
+  .about-text {
+    margin-bottom: 1.5rem; /* add space below paragraphs */
+  }
+  .h4.service-title {
+    margin-top: 1.5rem; /* add space above h4 heading */
+  }
+}
