@@ -3,48 +3,65 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Power BI Dashboard Showcase</title>
-  <link rel="stylesheet" href="./assets/css/style.css">
+  <title>Power BI Dashboard</title>
+  <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css" />
 
-  <!--
-    - google font link
-  -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 </head>
 
 <body>
+
 <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
 <header class="sidebar-info">
   <div class="avatar-box">
-    <!-- Optionally add an avatar or logo here -->
+    <!-- Optional logo or icon -->
   </div>
   <div class="info-content">
-    <h1 class="h2 article-title">Power BI Dashboard Showcase</h1>
-    <p class="title">Featuring my Power BI project</p>
+    <h1 class="h2 article-title">Power BI Dashboard</h1>
+    <h3 class="title">Featuring Eco Sales report</h3>
   </div>
 </header>
 
-
-
 <main>
-    
   <article class="content-card project-item active" id="dashboard">
-    <h2 class="h3 service-title">Power BI Dashboard & About the Project</h2>
-    <p class="about-text">This showcase highlights my Power BI dashboard project. The embedded dashboard below is interactive and demonstrates my data visualization skills and insights.</p>
     <iframe 
       src="https://app.powerbi.com/view?r=eyJrIjoiNjE2MzNlNTYtZmY4Yy00M2UyLTk4MzctZWJiYWY4NmQxNDdmIiwidCI6IjhmNDhlNWI0LWY2ZWQtNDc5NS1hYjBiLTZiNWUwZDlhYTJkNSJ9" 
       allowfullscreen="true" 
       title="Power BI Dashboard Embed"
-      style="width:100%; height: 75vh; border-radius: 16px; box-shadow: var(--shadow-2); border: none;">
+      style="width:100%; height: 75vh; border-radius: 16px; box-shadow: var(--shadow-2); border: none; margin-bottom: 1.5rem;">
     </iframe>
+
+    <h2 class="h3 service-title">Project Overview</h2>
+    <p class="about-text">
+      This project involved creating a comprehensive <strong>Eco Sales Dashboard</strong> leveraging Power BI to provide actionable insights into sales performance across various regions and customer segments. The dashboard was designed to enhance decision-making by visualizing core metrics including sales volumes, profit margins, customer breakdown, and payment methods.
+    </p>
+
+    <h3 class="h4 service-title">Project Objectives</h3>
+    <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+      <li><strong>a.</strong> Develop an interactive dashboard to monitor sales and profit data by state and customer.</li>
+      <li><strong>b.</strong> Enable dynamic filtering by quarter and state for focused analysis.</li>
+      <li><strong>c.</strong> Visualize product categories, payment methods, and profit by sub-categories clearly.</li>
+      <li><strong>d.</strong> Summarize key performance indicators including total sales amount, profit, quantity, and average order value.</li>
+      <li><strong>e.</strong> Deliver a business intelligence solution suitable for strategic and operational reporting.</li>
+    </ol>
+
+    <h3 class="h4 service-title">Project Results</h3>
+    <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+      <li><strong>a.</strong> Created an intuitive and visually appealing Power BI dashboard hosted on Microsoft’s platform.</li>
+      <li><strong>b.</strong> Enabled stakeholders to interactively view data trends by quarter, region, and customer segments.</li>
+      <li><strong>c.</strong> Provided actionable business insights leading to optimized marketing and sales strategies.</li>
+      <li><strong>d.</strong> Improved data literacy and decision quality within the business team through effective visualization.</li>
+      <li><strong>e.</strong> Demonstrated practical skills in Power BI report design, data modeling, and visualization best practices.</li>
+    </ol>
   </article>
 </main>
 
 <script>
-  // Smooth scrolling for navigation
+  // Smooth scrolling for navigation if you add navbar links later
   document.querySelectorAll('.navbar-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
