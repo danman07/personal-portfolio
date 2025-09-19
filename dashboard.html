@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Power BI Dashboard Showcase</title>
+  <link rel="stylesheet" href="./assets/css/style.css">
+
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  
+</head>
+
+<body>
+<h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+<header class="sidebar-info">
+  <div class="avatar-box">
+    <!-- Optionally add an avatar or logo here -->
+  </div>
+  <div class="info-content">
+    <h1 class="h2 article-title">Power BI Dashboard Showcase</h1>
+    <p class="title">Featuring my Power BI project</p>
+  </div>
+</header>
+
+
+
+<main>
+    
+  <article class="content-card project-item active" id="dashboard">
+    <h2 class="h3 service-title">Power BI Dashboard & About the Project</h2>
+    <p class="about-text">This showcase highlights my Power BI dashboard project. The embedded dashboard below is interactive and demonstrates my data visualization skills and insights.</p>
+    <iframe 
+      src="https://app.powerbi.com/view?r=eyJrIjoiNjE2MzNlNTYtZmY4Yy00M2UyLTk4MzctZWJiYWY4NmQxNDdmIiwidCI6IjhmNDhlNWI0LWY2ZWQtNDc5NS1hYjBiLTZiNWUwZDlhYTJkNSJ9" 
+      allowfullscreen="true" 
+      title="Power BI Dashboard Embed"
+      style="width:100%; height: 75vh; border-radius: 16px; box-shadow: var(--shadow-2); border: none;">
+    </iframe>
+  </article>
+</main>
+
+<script>
+  // Smooth scrolling for navigation
+  document.querySelectorAll('.navbar-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+</script>
+
+</body>
+</html>
