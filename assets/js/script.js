@@ -157,3 +157,22 @@ for (let i = 0; i < navigationLinks.length; i++) {
 
   });
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const navLinks = document.querySelectorAll("[data-nav-link]");
+  const pages = document.querySelectorAll("[data-page]");
+
+  navLinks.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const target = btn.textContent.trim().toLowerCase();
+
+      // Toggle pages
+      pages.forEach((page) => {
+        page.classList.toggle("active", page.dataset.page === target);
+      });
+
+      // Toggle nav highlights
+      navLinks.forEach((l) => l.classList.remove("active"));
+      btn.classList.add("active");
+    });
+  });
+});
