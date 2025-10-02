@@ -85,7 +85,25 @@
       });
     });
   });
+  (function backToPortfolio(home = 'https://danman07.github.io/personal-portfolio/') {
+    // If we are already on the portfolio root, do nothing
+    if (location.href.replace(/\/+$/, '/') === home) return;
+
+    // Install a guard state so the first Back triggers popstate here
+    try {
+      const KEY = '__back_guard__';
+      if (!(history.state && history.state[KEY])) {
+        history.pushState({ [KEY]: true }, '', location.href);
+      }
+    } catch (_) { /* ignore if pushState not allowed */ }
+
+    // On Back/Forward navigation, go to the portfolio homepage
+    window.addEventListener('popstate', function () {
+      location.replace(home);
+    });
+  })();
 </script>
 
 </body>
 </html>
+
