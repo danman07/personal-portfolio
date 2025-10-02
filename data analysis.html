@@ -63,7 +63,7 @@
   </article>
 </main>
 
-<script>
+<<script>
   // Smooth scrolling for navigation if you add navbar links later
   document.querySelectorAll('.navbar-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
@@ -73,8 +73,32 @@
       });
     });
   });
+
+  // Redirect Back to index.html when this page is opened directly
+  (function enableBackToHome(homeFileName = 'index.html') {
+    // If already on home, do nothing
+    const onHome = /(?:^|\/)index\.html?$/i.test(location.pathname) || location.pathname.endsWith('/');
+    if (onHome) return;
+
+    // Resolve index.html relative to current folder (works in subfolders)
+    const homeUrl = location.pathname.replace(/[^/]+$/, '') + homeFileName;
+
+    // Install a guard state so the first Back triggers popstate here
+    try {
+      const KEY = '__back_guard__';
+      if (!(history.state && history.state[KEY])) {
+        history.pushState({ [KEY]: true }, '', location.href);
+      }
+    } catch (_) { /* no-op: pushState may be blocked in rare cases */ }
+
+    // When the user presses Back/Forward, go to Home
+    window.addEventListener('popstate', function () {
+      location.replace(homeUrl);
+    });
+  })();
 </script>
 
 </body>
 </html>
+
 
