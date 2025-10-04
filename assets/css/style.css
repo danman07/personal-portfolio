@@ -1882,3 +1882,24 @@ textarea.form-input::-webkit-resizer { display: none; }
     margin-top: 1.5rem; /* add space above h4 heading */
   }
 }
+/* Put these near the END of assets/css/style.css */
+.contact .contact-form .form-status { 
+  color: #e3e9e5f5; /* default neutral if needed */
+}
+
+.contact .contact-form .form-status.is-sending { 
+  color: #e3e9e5f5; 
+}
+
+.contact .contact-form .form-status.is-success { 
+  color: #e3e9e5f5; /* green */
+}
+
+.contact .contact-form .form-status.is-error { 
+  color: #f31212; /* red */
+}
+
+/* If still black, temporarily force with !important to diagnose override */
+.contact .contact-form .form-status.is-success { 
+  color: #e3e9e5f5 !important; 
+}
