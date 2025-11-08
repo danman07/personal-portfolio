@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tata Group Data Analytics Job Simulation</title>
+  <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+  <header class="sidebar-info">
+    <div class="avatar-box">
+      <!-- Optional logo or icon (e.g. Tata logo or your avatar) -->
+    </div>
+    <div class="info-content">
+      <h1 class="h2 article-title">Tata Group Data Analytics Job Simulation</h1>
+      <p class="title">Forage</p>
+    </div>
+  </header>
+
+  <main>
+    <article class="content-card active" id="overview">
+
+      <li class="project-item active" data-filter-item data-category="certifications">
+        <a href="https://www.theforage.com/completion-certificates/ifobHAoMjQs9s6bKS/gMTdCXwDdLYoXZ3wG_ifobHAoMjQs9s6bKS_68d4d25d5232a871dc11d146_1761632344561_completion_certificate.pdf" target="_blank" rel="noopener noreferrer">
+          <figure class="project-img" style="width: 600px; max-width: 100%; margin: auto;">
+            <img src="./assets/images/tataGenAi.png" alt="Tata Group Data Analytics Simulation Certificate" loading="lazy" style="width: 100%; height: auto;" />
+          </figure>
+        </a>
+      </li>
+
+      <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+
+      <h2 class="h3 service-title">About the Simulation</h2>
+      <p class="about-text">
+        Completed the Tata Group Data Analytics Job Simulation on Forage in October 2025, focused on leveraging AI-powered data analytics and strategy development for the Financial Services team at Tata iQ.
+      </p>
+
+      <h3 class="h4 service-title">Work Performed</h3>
+      <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+        <li><strong>a.</strong> Completed a simulation involving AI-driven analytics and strategy for Tata iQ's Financial Services division.</li>
+        <li><strong>b.</strong> Conducted exploratory data analysis (EDA) using GenAI tools to assess data quality, identify risk indicators, and structure insights for predictive modeling.</li>
+        <li><strong>c.</strong> Proposed and justified an initial no-code predictive modeling framework for customer delinquency risk, using GenAI for logic and evaluation criteria.</li>
+        <li><strong>d.</strong> Designed an AI-driven collections strategy using agentic AI and automation, incorporating ethical AI principles, regulatory compliance, and scalable implementation frameworks.</li>
+      </ol>
+
+      <h3 class="h4 service-title">Skills Learned</h3>
+      <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+        <li><strong>a.</strong> AI Analytics</li>
+        <li><strong>b.</strong> AI Strategy</li>
+        <li><strong>c.</strong> Analytical Reporting</li>
+        <li><strong>d.</strong> Business Communication</li>
+        <li><strong>e.</strong> Data Interpretation</li>
+        <li><strong>f.</strong> Data Quality Management</li>
+        <li><strong>g.</strong> Decision Making</li>
+        <li><strong>h.</strong> Ethical Reasoning</li>
+        <li><strong>i.</strong> Exploratory Data Analysis</li>
+        <li><strong>j.</strong> Model Selection</li>
+        <li><strong>k.</strong> Model Validation</li>
+        <li><strong>l.</strong> Predictive Analytics</li>
+        <li><strong>m.</strong> Process Automation</li>
+        <li><strong>n.</strong> Regulatory Compliance</li>
+        <li><strong>o.</strong> Strategic Thinking</li>
+      </ol>
+    </article>
+  </main>
+
+  <script>
+    // Smooth scrolling for navigation if you add navbar links later
+    document.querySelectorAll('.navbar-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+    // Redirect Back to index.html when this page is opened directly
+    (function backToPortfolio(home = 'https://danman07.github.io/personal-portfolio/') {
+      if (location.href.replace(/\/+$/, '/') === home) return;
+      try {
+        const KEY = '__back_guard__';
+        if (!(history.state && history.state[KEY])) {
+          history.pushState({ [KEY]: true }, '', location.href);
+        }
+      } catch (_) { /* ignore if pushState not allowed */ }
+      window.addEventListener('popstate', function () {
+        location.replace(home);
+      });
+    })();
+  </script>
+</body>
+</html>
