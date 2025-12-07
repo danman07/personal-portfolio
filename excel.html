@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Business Analytics with Excel</title>
+  <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+
+    
+<h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+<header class="sidebar-info">
+  <div class="avatar-box">
+    <!-- Optional logo or icon -->
+  </div>
+  <div class="info-content">
+    <h1 class="h2 article-title">Business Analytics with Excel</h1>
+    <p class="title">Simplilearn</p>
+  </div>
+</header>
+
+<main>
+  <article class="content-card active" id="overview">
+    <li class="project-item active" data-filter-item data-category="certifications">
+      <a href="https://simpli-web.app.link/e/8mpgxKFvTYb" target="_blank" rel="noopener noreferrer">
+        <figure class="project-img" style="width: 600px; max-width: 100%; margin: auto;">
+          <!-- Replace the image below with your excel thumbnail -->
+          <img src="./assets/images/excel.png" alt="Business Analytics with Excel Certificate" loading="lazy" style="width: 100%; height: auto;" />
+        </figure>
+      </a>
+      
+      </div>
+    </li>
+
+    <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+
+    <h2 class="h3 service-title">About the Course</h2>
+    <p class="about-text">
+      Completed the Business Analytics with Excel course on Simplilearn. Focused on practical Excel techniques for business analytics including data cleaning, advanced formulas, PivotTables, Power Query basics, Solver for scenario analysis, and dashboard/report creation to support decision-making.
+    </p>
+
+    <h3 class="h4 service-title">Work Performed</h3>
+    <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+      <li><strong>a.</strong> Cleaned and transformed messy datasets to analysis-ready form using Excel techniques and Power Query.</li>
+      <li><strong>b.</strong> Built PivotTables and PivotCharts to summarise and visualise business metrics quickly.</li>
+      <li><strong>c.</strong> Applied advanced formulas (INDEX-MATCH, XLOOKUP, nested IFs, dynamic arrays) for robust calculations.</li>
+      <li><strong>d.</strong> Used Solver and data tables for simple optimization and scenario planning under constraints.</li>
+      <li><strong>e.</strong> Created presentation-ready dashboards and slide summaries to communicate insights to stakeholders.
+      </li>
+    </ol>
+
+    <h3 class="h4 service-title">Skills Learned</h3>
+    <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+      <li><strong>a.</strong> Advanced Excel (INDEX-MATCH, XLOOKUP, dynamic arrays)</li>
+      <li><strong>b.</strong> PivotTables & PivotCharts</li>
+      <li><strong>c.</strong> Power Query (basic ETL)</li>
+      <li><strong>d.</strong> Solver & scenario analysis</li>
+      <li><strong>e.</strong> Data cleaning and transformation</li>
+      <li><strong>f.</strong> Dashboard design & presentation</li>
+      <li><strong>g.</strong> Basic automation (macros overview)</li>
+      <li><strong>h.</strong> Business case analysis using Excel</li>
+      <li><strong>i.</strong> Reporting for stakeholders</li>
+      <li><strong>j.</strong> Problem-solving with data</li>
+      <li><strong>k.</strong> Communicating quantitative insights</li>
+      <li><strong>l.</strong> Time-saving formulas & tricks</li>
+      <li><strong>m.</strong> Best practices for reproducible analysis</li>
+    </ol>
+  </article>
+</main>
+
+<script>
+  // Smooth scrolling for navigation if you add navbar links later
+  document.querySelectorAll('.navbar-link').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      document.querySelector(this.getAttribute('href')).scrollIntoView({
+        behavior: 'smooth'
+      });
+    });
+  });
+
+  // Redirect Back to index.html when this page is opened directly
+  (function backToPortfolio(home = 'https://danman07.github.io/personal-portfolio/') {
+    // If we are already on the portfolio root, do nothing
+    if (location.href.replace(/\/+$/, '/') === home) return;
+
+    // Install a guard state so the first Back triggers popstate here
+    try {
+      const KEY = '__back_guard__';
+      if (!(history.state && history.state[KEY])) {
+        history.pushState({ [KEY]: true }, '', location.href);
+      }
+    } catch (_) { /* ignore if pushState not allowed */ }
+
+    // On Back/Forward navigation, go to the portfolio homepage
+    window.addEventListener('popstate', function () {
+      location.replace(home);
+    });
+  })();
+</script>
+
+</body>
+</html>
