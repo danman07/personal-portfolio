@@ -2,9 +2,6 @@
   #style.css
 \*-----------------------------------*/
 
-
-
-
 /*-----------------------------------*\
   #CUSTOM PROPERTY
 \*-----------------------------------*/
@@ -105,10 +102,6 @@
 
 }
 
-
-
-
-
 /*-----------------------------------*\
   #RESET
 \*-----------------------------------*/
@@ -150,10 +143,6 @@ input, textarea {
 html { font-family: var(--ff-poppins); }
 
 body { background: var(--smoky-black); }
-
-
-
-
 
 /*-----------------------------------*\
   #REUSED STYLE
@@ -250,8 +239,8 @@ article.active {
 }
 
 .has-scrollbar::-webkit-scrollbar {
-  width: 5px; /* for vertical scrollbar */
-  height: 5px; /* for horizontal scrollbar */
+  width: 5px;
+  height: 5px;
 }
 
 .has-scrollbar::-webkit-scrollbar-track {
@@ -286,10 +275,6 @@ article.active {
   z-index: -1;
 }
 
-
-
-
-
 /*-----------------------------------*\
   #MAIN
 \*-----------------------------------*/
@@ -299,10 +284,6 @@ main {
   margin-bottom: 75px;
   min-width: 259px;
 }
-
-
-
-
 
 /*-----------------------------------*\
   #SIDEBAR
@@ -437,12 +418,7 @@ main {
   font-size: 18px;
 }
 
-
 .social-item .social-link:hover { color: var(--light-gray); }
-
-
-
-
 
 /*-----------------------------------*\
   #NAVBAR
@@ -481,10 +457,6 @@ main {
 
 .navbar-link.active { color: var(--orange-yellow-crayola); }
 
-
-
-
-
 /*-----------------------------------*\
   #ABOUT
 \*-----------------------------------*/
@@ -499,8 +471,6 @@ main {
 }
 
 .about-text p { margin-bottom: 15px; }
-
-
 
 /**
  * #service 
@@ -548,7 +518,6 @@ main {
   font-weight: var(--fw-3);
   line-height: 1.6;
 }
-
 
 /**
  * #testimonials 
@@ -600,7 +569,6 @@ main {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-
 
 /**
  * #testimonials-modal
@@ -715,7 +683,6 @@ main {
   line-height: 1.6;
 }
 
-
 /**
  * #clients 
  */
@@ -750,16 +717,11 @@ main {
 
 .clients-item img:hover { filter: grayscale(0); }
 
-
-
-
-
 /*-----------------------------------*\
   #RESUME
 \*-----------------------------------*/
 
 .article-title { margin-bottom: 30px; }
-
 
 /**
  * education and experience 
@@ -823,7 +785,6 @@ main {
   line-height: 1.6;
 }
 
-
 /**
  * skills 
  */
@@ -831,7 +792,6 @@ main {
 .skills-title { margin-bottom: 20px; }
 
 .skills-list { padding: 20px; }
-
 
 .skills-item:not(:last-child) { margin-bottom: 15px; }
 
@@ -860,10 +820,6 @@ main {
   height: 100%;
   border-radius: inherit;
 }
-
-
-
-
 
 /*-----------------------------------*\
   #PORTFOLIO
@@ -947,10 +903,11 @@ main {
 
 .project-item > a { width: 100%; }
 
+/* Desktop/tablet: fixed 7:5 cropped thumbnails */
 .project-img {
   position: relative;
   width: 100%;
-  height: 200px;
+  aspect-ratio: 7 / 5;
   border-radius: 16px;
   overflow: hidden;
   margin-bottom: 15px;
@@ -972,7 +929,6 @@ main {
 
 .project-item-icon-box {
   --scale: 0.8;
-
   background: var(--jet);
   color: var(--orange-yellow-crayola);
   position: absolute;
@@ -1019,10 +975,6 @@ main {
   font-size: var(--fs-6);
   font-weight: var(--fw-300);
 }
-
-
-
-
 
 /*-----------------------------------*\
   #BLOG
@@ -1107,10 +1059,6 @@ main {
   font-weight: var(--fw-300);
   line-height: 1.6;
 }
-
-
-
-
 
 /*-----------------------------------*\
   #CONTACT
@@ -1215,10 +1163,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 .form-btn:disabled:hover::before { background: var(--bg-gradient-jet); }
 
-
-
-
-
 /*-----------------------------------*\
   #RESPONSIVE
 \*-----------------------------------*/
@@ -1235,8 +1179,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .clients-item { min-width: calc(33.33% - 10px); }
 
-
-
   /**
    * #PORTFOLIO, BLOG 
    */
@@ -1245,10 +1187,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .blog-banner-box { height: auto; }
 
 }
-
-
-
-
 
 /**
  * responsive larger than 580px screen
@@ -1275,8 +1213,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     --fs-8: 12px;
 
   }
-
-
 
   /**
    * #REUSED STYLE
@@ -1305,8 +1241,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     font-size: 18px;
   }
 
-
-
   /**
    * #MAIN
    */
@@ -1315,8 +1249,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     margin-top: 60px;
     margin-bottom: 100px;
   }
-
-
 
   /**
    * #SIDEBAR
@@ -1361,8 +1293,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: calc(100% - 64px);
   }
 
-
-
   /**
    * #NAVBAR
    */
@@ -1372,8 +1302,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .navbar-list { gap: 20px; }
 
   .navbar-link { --fs-8: 14px; }
-
-
 
   /**
    * #ABOUT
@@ -1476,8 +1404,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .clients-item { min-width: calc(33.33% - 35px); }
 
-
-
   /**
    * #RESUME
    */
@@ -1494,8 +1420,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .skills-item:not(:last-child) { margin-bottom: 25px; }
 
-
-
   /**
    * #PORTFOLIO, BLOG
    */
@@ -1505,8 +1429,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .blog-posts-list { gap: 30px; }
 
   .blog-content { padding: 25px; }
-
-
 
   /**
    * #CONTACT
@@ -1535,10 +1457,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
 }
 
-
-
-
-
 /**
  * responsive larger than 768px screen
  */
@@ -1553,8 +1471,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .has-scrollbar::-webkit-scrollbar-button { width: 100px; }
 
-
-
   /**
    * SIDEBAR
    */
@@ -1564,15 +1480,11 @@ textarea.form-input::-webkit-resizer { display: none; }
     gap: 30px 15px;
   }
 
-
-
   /**
    * NAVBAR
    */
 
   .navbar-link { --fs-8: 15px; }
-
-
 
   /**
    * ABOUT
@@ -1586,8 +1498,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
 
   .modal-avatar-box img { width: 80px; }
-
-
 
   /**
    * PORTFOLIO
@@ -1620,8 +1530,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .project-list, .blog-posts-list { grid-template-columns: 1fr 1fr; }
 
-
-
   /**
    * CONTACT
    */
@@ -1634,10 +1542,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   }
   
 }
-
-
-
-
 
 /**
  * responsive larger than 1024px screen
@@ -1652,16 +1556,14 @@ textarea.form-input::-webkit-resizer { display: none; }
   :root {
 
     /**
-    * shadow
-    */
+     * shadow
+     */
 
     --shadow-1: -4px 8px 24px hsla(0, 0%, 0%, 0.125);
     --shadow-2: 0 16px 30px hsla(0, 0%, 0%, 0.125);
     --shadow-3: 0 16px 40px hsla(0, 0%, 0%, 0.125);
 
   }
-
-
 
   /**
    * REUSED STYLE
@@ -1671,8 +1573,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: 950px;
     box-shadow: var(--shadow-5);
   }
-
-
 
   /**
    * MAIN 
@@ -1685,8 +1585,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: max-content;
     margin: auto;
   }
-
-
 
   /**
    * NAVBAR
@@ -1711,8 +1609,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .navbar-link { font-weight: var(--fw-500); }
 
-
-
   /**
    * ABOUT
    */
@@ -1732,15 +1628,11 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .clients-item { min-width: calc(25% - 38px); }
 
-
-
   /**
    * PORTFOLIO
    */
 
   .project-list { grid-template-columns: repeat(3, 1fr); }
-
-
 
   /**
    * BLOG
@@ -1749,10 +1641,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .blog-banner-box { height: 230px; }
 
 }
-
-
-
-
 
 /**
  * responsive larger than 1250px screen
@@ -1780,8 +1668,6 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   body::-webkit-scrollbar-button { height: 60px; }
 
-
-
   /**
    * REUSED STYLE
    */
@@ -1789,8 +1675,6 @@ textarea.form-input::-webkit-resizer { display: none; }
   .sidebar, article { width: auto; }
 
   article { min-height: 100%; }
-
-
 
   /**
    * MAIN
@@ -1810,8 +1694,6 @@ textarea.form-input::-webkit-resizer { display: none; }
     width: 75%;
     margin: 0;
   }
-
-
 
   /**
    * SIDEBAR
@@ -1865,26 +1747,27 @@ textarea.form-input::-webkit-resizer { display: none; }
 
   .social-list { justify-content: center; }
 
-
-
   /**
-	 * RESUME
-	 */
+   * RESUME
+   */
 
   .timeline-text { max-width: 700px; }
 
 }
+
+/* small spacing tweak */
 @media (max-width: 768px) {
   .about-text {
-    margin-bottom: 1.5rem; /* add space below paragraphs */
+    margin-bottom: 1.5rem;
   }
   .h4.service-title {
-    margin-top: 1.5rem; /* add space above h4 heading */
+    margin-top: 1.5rem;
   }
 }
-/* Put these near the END of assets/css/style.css */
+
+/* Contact form status colors */
 .contact .contact-form .form-status { 
-  color: #e3e9e5f5; /* default neutral if needed */
+  color: #e3e9e5f5;
 }
 
 .contact .contact-form .form-status.is-sending { 
@@ -1892,29 +1775,29 @@ textarea.form-input::-webkit-resizer { display: none; }
 }
 
 .contact .contact-form .form-status.is-success { 
-  color: #e3e9e5f5; /* green */
+  color: #e3e9e5f5;
 }
 
 .contact .contact-form .form-status.is-error { 
-  color: #f31212; /* red */
+  color: #f31212;
 }
 
-/* If still black, temporarily force with !important to diagnose override */
+/* debug force if needed */
 .contact .contact-form .form-status.is-success { 
   color: #e3e9e5f5 !important; 
 }
-/* Portfolio project image: fixed 7:5 ratio */
-.project-img {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 7 / 5;   /* keeps box at 7:5 ratio */
-  overflow: hidden;
-}
 
-/* Ensure all portfolio images fill that box consistently */
-.project-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* crops while preserving image aspect ratio */
-  display: block;
+/* Mobile: keep 7:5 but do NOT crop certificates/images */
+@media (max-width: 768px) {
+  .project-img {
+    aspect-ratio: 7 / 5;
+    overflow: hidden;
+  }
+
+  .project-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;     /* no cropping on mobile */
+    background-color: var(--eerie-black-2);
+  }
 }
