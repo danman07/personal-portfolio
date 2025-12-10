@@ -1903,3 +1903,18 @@ textarea.form-input::-webkit-resizer { display: none; }
 .contact .contact-form .form-status.is-success { 
   color: #e3e9e5f5 !important; 
 }
+/* Portfolio project image: fixed 7:5 ratio */
+.project-img {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 7 / 5;   /* keeps box at 7:5 ratio */
+  overflow: hidden;
+}
+
+/* Ensure all portfolio images fill that box consistently */
+.project-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;     /* crops while preserving image aspect ratio */
+  display: block;
+}
