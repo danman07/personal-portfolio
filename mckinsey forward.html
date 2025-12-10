@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>McKinsey Forward — Core Skills</title>
+  <link rel="shortcut icon" href="./assets/images/logo.png" type="image/x-icon">
+  <link rel="stylesheet" href="./assets/css/style.css" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+</head>
+
+<body>
+  
+  <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+  <header class="sidebar-info">
+    <div class="avatar-box">
+      <!-- Optional logo or icon -->
+    </div>
+    <div class="info-content">
+      <h1 class="h2 article-title">McKinsey.org Forward Program</h1>
+      <p class="title">McKinsey & Company</p>
+    </div>
+  </header>
+
+  <main>
+    <article class="content-card active" id="overview">
+      <li class="project-item active" data-filter-item data-category="certifications">
+        <a href="https://www.credly.com/badges/a050cd20-70d4-4688-9454-f1147cf41e4b/public_url" target="_blank" rel="noopener noreferrer">
+          <figure class="project-img" style="width: 600px; max-width: 100%; margin: auto;">
+            <!-- Replace the image below with the actual preview if available -->
+            <img src="./assets/images/McKinsey.png" alt="McKinsey Forward Core Skills Digital Badge" loading="lazy" style="width: 100%; height: auto;" />
+          </figure>
+        </a>
+      </li>
+
+      <h2 class="h3 service-title" style="color: transparent;">     .            </h2>
+
+      <h2 class="h3 service-title">Program Snapshot</h2>
+      <p class="about-text">
+        Completed the McKinsey Forward — Core Skills level through McKinsey.org, finishing all digital courses and the live Lead Forward webinar. Strengthened practical workplace capabilities in structured problem solving, adaptive mindsets, high-impact communication, team relationships, and digital literacy. Completion validated by official McKinsey.org digital badge.
+      </p>
+
+      <h3 class="h4 service-title">My Role</h3>
+      <p class="about-text">
+        Participant & applied-practice owner — completed all modules and translated learnings into short, actionable habits used in team projects and portfolio case studies.
+      </p>
+
+      <h3 class="h4 service-title">Skills & Tools Demonstrated</h3>
+      <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+        <li><strong>a.</strong> Structured problem solving — broke down ambiguous problems into clear hypotheses and prioritized actions.</li>
+        <li><strong>b.</strong> Impact communication — practiced concise stakeholder updates and audience-led messaging.</li>
+        <li><strong>c.</strong> Adaptability & resilience — applied routines to manage shifting priorities during tight deadlines.</li>
+        <li><strong>d.</strong> Relationships & well-being — used collaboration techniques to improve team alignment and reduce rework.</li>
+        <li><strong>e.</strong> Digital toolkit mindset — mapped workflows that combine data, tools, and automation for faster insights.</li>
+      </ol>
+
+      <h3 class="h4 service-title">Portfolio Highlights & Impact</h3>
+      <ol class="objectives about-text" style="list-style-type: none; padding-left: 0;">
+        <li><strong>a.</strong> Applied structured problem solving to reduce analysis turnaround for a mock sales case by ~30%.</li>
+        <li><strong>b.</strong> Reworked stakeholder update template into a 3-bullet format for clarity.</li>
+        <li><strong>c.</strong> Implemented a daily stand-up and feedback loop to reduce duplicated work in a mini-project.</li>
+        <li><strong>d.</strong> Created a 90-day skill development plan focused on digital toolkit, micro-projects, and portfolio cases.</li>
+      </ol>
+
+      
+    </article>
+  </main>
+
+  <script>
+    // Smooth scrolling for navigation if you add navbar links later
+    document.querySelectorAll('.navbar-link').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        document.querySelector(this.getAttribute('href')).scrollIntoView({
+          behavior: 'smooth'
+        });
+      });
+    });
+
+    // Redirect Back to index.html when this page is opened directly
+    (function backToPortfolio(home = 'https://danman07.github.io/personal-portfolio/') {
+      // If we are already on the portfolio root, do nothing
+      if (location.href.replace(/\/+$/, '/') === home) return;
+
+      // Install a guard state so the first Back triggers popstate here
+      try {
+        const KEY = '__back_guard__';
+        if (!(history.state && history.state[KEY])) {
+          history.pushState({ [KEY]: true }, '', location.href);
+        }
+      } catch (_) { /* ignore if pushState not allowed */ }
+
+      // On Back/Forward navigation, go to the portfolio homepage
+      window.addEventListener('popstate', function () {
+        location.replace(home);
+      });
+    })();
+  </script>
+
+</body>
+</html>
