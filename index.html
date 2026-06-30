@@ -475,7 +475,7 @@
       animation: strip-slide-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     }
 
-    /* ========== PEEK CREATURE ========== */
+    /* ========== PEEK CREATURE (homepage — unchanged) ========== */
     .peek-creature {
       display: block;
       position: absolute;
@@ -576,13 +576,228 @@
       animation: creature-wave 5s ease-in-out infinite;
       transform-origin: 50% 100%;
     }
+
+    .skills-roam-arena {
+      position: relative;
+    }
+
+    .skills-roam-track {
+      position: relative;
+      height: 118px;
+      margin-top: 4px;
+      overflow: hidden;
+    }
+
+    .skills-roam-track::before {
+      content: '';
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 24px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(166, 233, 58, 0.35), transparent);
+    }
+
+    .skills-roaming-creature {
+      position: absolute;
+      left: 10px;
+      bottom: 16px;
+      z-index: 2;
+      cursor: pointer;
+      filter: drop-shadow(0 0 12px rgba(166, 233, 58, 0.45));
+      animation: skills-roam 8s ease-in-out infinite alternate, skills-bob 1.8s ease-in-out infinite;
+    }
+
+    .skills-roaming-creature.caught {
+      animation-play-state: paused;
+      transform: translateX(calc(100vw - 130px)) scale(1.08);
+    }
+
+    .skills-creature-eye {
+      animation: skills-blink 4s ease-in-out infinite;
+    }
+
+    .skills-creature-eye:nth-child(2) {
+      animation-delay: 0.15s;
+    }
+
+    .skills-creature-hand {
+      animation: skills-wave 2.4s ease-in-out infinite;
+      transform-origin: 63px 42px;
+    }
+
+    .skills-roam-chip {
+      position: absolute;
+      z-index: 1;
+      padding: 5px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(166, 233, 58, 0.25);
+      background: rgba(0, 0, 0, 0.65);
+      color: #A6E93A;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .skills-roam-chip-one {
+      left: 18%;
+      top: 18px;
+    }
+
+    .skills-roam-chip-two {
+      right: 18%;
+      top: 34px;
+    }
+
+    .skills-roam-chip-three {
+      left: 48%;
+      bottom: 18px;
+    }
+
+    @keyframes skills-roam {
+      from {
+        left: 8px;
+      }
+
+      to {
+        left: calc(100% - 90px);
+      }
+    }
+
+    @keyframes skills-bob {
+
+      0%,
+      100% {
+        margin-bottom: 0;
+      }
+
+      50% {
+        margin-bottom: 8px;
+      }
+    }
+
+    @keyframes skills-blink {
+
+      0%,
+      90%,
+      100% {
+        transform: scaleY(1);
+      }
+
+      94%,
+      98% {
+        transform: scaleY(0.12);
+      }
+    }
+
+    @keyframes skills-wave {
+
+      0%,
+      70%,
+      100% {
+        transform: rotate(0deg);
+      }
+
+      78% {
+        transform: rotate(-18deg);
+      }
+
+      86% {
+        transform: rotate(14deg);
+      }
+
+      94% {
+        transform: rotate(-8deg);
+      }
+    }
+
+    @media (min-width: 640px) {
+      .skills-roam-track {
+        height: 145px;
+      }
+
+      .skills-roaming-creature svg {
+        width: 92px;
+        height: 78px;
+      }
+
+      @keyframes skills-roam {
+        from {
+          left: 18px;
+        }
+
+        to {
+          left: calc(100% - 112px);
+        }
+      }
+    }
+
+    .mobile-resume-toggle {
+      position: absolute;
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .past-works-card {
+      transition:
+        border-color .3s ease,
+        background .3s ease,
+        box-shadow .3s ease;
+    }
+
+    .resume-open-icon {
+      transition: transform .3s ease;
+    }
+
+    .resume-preview {
+      max-height: 42px;
+      overflow: hidden;
+      opacity: 1;
+      transition: .3s ease;
+    }
+
+    .resume-dropdown-content {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(-8px);
+      transition:
+        max-height .45s ease,
+        opacity .3s ease,
+        transform .3s ease;
+    }
+
+    /* Works for BOTH mobile & desktop */
+    .mobile-resume-toggle:checked+.past-works-card {
+      border-color: rgba(166, 233, 58, .35);
+      background: rgba(0, 0, 0, .92);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, .22);
+    }
+
+    .mobile-resume-toggle:checked+.past-works-card .resume-open-icon {
+      transform: rotate(180deg);
+    }
+
+    .mobile-resume-toggle:checked+.past-works-card .resume-preview {
+      max-height: 0;
+      opacity: 0;
+      margin-top: 0;
+    }
+
+    .mobile-resume-toggle:checked+.past-works-card .resume-dropdown-content {
+      max-height: 600px;
+      opacity: 1;
+      transform: translateY(0);
+    }
   </style>
 </head>
 
 <body class="overflow-x-hidden pb-36 md:pb-0">
   <!-- ========== NAVIGATION ========== -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-neutral-800/50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-between">
+    <div
+      class="relative max-w-7xl mx-auto px-4 sm:px-6 py-2.5 sm:py-3.5 flex items-center justify-center sm:justify-between">
       <a href="#" onclick="navigateTo('mainPage'); return false;" class="flex items-center gap-2 z-50">
         <div class="w-8 h-8 sm:w-10 sm:h-10 rounded-full overflow-hidden flex items-center justify-center bg-black">
           <img src="./assets/images/20240216_173446.png" alt="Danish Mandal" class="w-full h-full object-cover">
@@ -696,8 +911,10 @@
               class="px-4 py-2 rounded-[30px] bg-neutral-900 border border-neutral-800 text-xs font-semibold uppercase tracking-wider hover:border-[#A6E93A]/50 hover:text-[#A6E93A] transition-colors cursor-default inline-flex items-center gap-1.5"><i
                 data-lucide="table" class="w-3.5 h-3.5"></i>Excel</span>
             <span
-              class="px-4 py-2 rounded-[30px] bg-neutral-900 border border-neutral-800 text-xs font-semibold uppercase tracking-wider hover:border-[#A6E93A]/50 hover:text-[#A6E93A] transition-colors cursor-default inline-flex items-center gap-1.5"><i
-                data-lucide="target" class="w-3.5 h-3.5"></i>Meta Ads</span>
+              class="px-4 py-2 rounded-[30px] bg-neutral-900 border border-neutral-800 text-xs font-semibold uppercase tracking-wider hover:border-[#A6E93A]/50 hover:text-[#A6E93A] transition-colors cursor-default inline-flex items-center gap-1.5"><img
+                src="./assets/images/meta.png" alt="Meta" class="w-3.5 h-3.5 object-contain"
+                style="filter: brightness(0) saturate(100%) invert(78%) sepia(68%) saturate(502%) hue-rotate(34deg) brightness(104%) contrast(90%);">Meta
+            </span>
             <span
               class="px-4 py-2 rounded-[30px] bg-neutral-900 border border-neutral-800 text-xs font-semibold uppercase tracking-wider hover:border-[#A6E93A]/50 hover:text-[#A6E93A] transition-colors cursor-default inline-flex items-center gap-1.5"><i
                 data-lucide="megaphone" class="w-3.5 h-3.5"></i>Marketing</span>
@@ -724,8 +941,9 @@
               <div
                 class="hero-float-badge absolute bottom-20 right-3 sm:bottom-36 sm:right-8 px-2 py-1 sm:px-3 sm:py-2 rounded-[10px] sm:rounded-[20px] bg-black/70 backdrop-blur-xl border border-neutral-800 flex items-center gap-1 sm:gap-2 animate-float-sm"
                 style="animation-delay:1.5s">
-                <i data-lucide="target" class="w-3 h-3 sm:w-4 sm:h-4 neon-text"></i><span
-                  class="text-[9px] sm:text-xs font-semibold">Meta Ads</span>
+                <img src="./assets/images/meta.png" alt="Meta" class="w-3 h-3 sm:w-4 sm:h-4 object-contain"
+                  style="filter: brightness(0) saturate(100%) invert(78%) sepia(68%) saturate(502%) hue-rotate(34deg) brightness(104%) contrast(90%);">
+                <span class="text-[9px] sm:text-xs font-semibold">Meta</span>
               </div>
               <div
                 class="hero-float-badge absolute bottom-8 left-3 sm:bottom-24 sm:left-6 px-2 py-1 sm:px-3 sm:py-2 rounded-[10px] sm:rounded-[20px] bg-black/70 backdrop-blur-xl border border-neutral-800 flex items-center gap-1 sm:gap-2 animate-float-sm"
@@ -787,11 +1005,7 @@
             <div
               class="absolute -bottom-3 -right-3 sm:-bottom-4 sm:-right-4 w-full h-full border-2 border-[#A6E93A]/20 rounded-[20px] sm:rounded-[30px] -z-10">
             </div>
-            <div
-              class="absolute right-2 sm:right-3 md:-right-3 top-4 sm:top-6 px-3 sm:px-5 py-2 sm:py-3 rounded-[16px] sm:rounded-[20px] bg-black border border-[#A6E93A]/30 shadow-lg">
-              <span class="font-['Oswald'] text-xl sm:text-3xl font-medium neon-text">BBA</span>
-              <p class="text-[9px] sm:text-[10px] uppercase tracking-widest text-neutral-400">Graduate • 2025</p>
-            </div>
+
           </div>
           <div class="text-center lg:text-left">
             <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest neon-text">About Me</span>
@@ -826,283 +1040,572 @@
   </div>
   <!-- ==================== SKILLS PAGE ==================== -->
   <div id="skillsPage" class="page">
-    <div class="pt-24 pb-12 relative">
+    <div class="pt-20 sm:pt-24 pb-28 md:pb-12 relative">
       <div class="max-w-7xl mx-auto px-4 sm:px-6">
         <button onclick="navigateTo('mainPage')"
-          class="mb-6 flex items-center gap-2 text-sm text-neutral-400 hover:text-[#A6E93A] transition-colors"><i
-            data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home</button>
-        <div class="text-center mb-8 sm:mb-12">
+          class="mb-4 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-neutral-400 hover:text-[#A6E93A] transition-colors">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+        </button>
+
+        <div class="text-center mb-5 sm:mb-10">
           <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest neon-text">What I'm Doing</span>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight uppercase mt-2 sm:mt-3">My
-            Domains</h2>
-          <p class="text-neutral-400 text-sm sm:text-base font-light mt-3 max-w-2xl mx-auto"><span
-              class="md:hidden">Business logic meets analytical rigor, strategy meets execution.</span><span
-              class="hidden md:inline">Most people pick one lane. I run across all of them — where business logic meets
-              analytical rigor, and strategy meets execution.</span></p>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight uppercase mt-1.5 sm:mt-3">
+            My Domains
+          </h2>
+          <p class="text-neutral-400 text-xs sm:text-base font-light mt-2 sm:mt-3 max-w-2xl mx-auto leading-relaxed">
+            Tap a domain to see the skills I use in that field.
+          </p>
         </div>
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
-          <!-- CREATIVE DOMAIN -->
-          <div
-            class="relative group rounded-[20px] sm:rounded-[30px] border border-[#A6E93A]/30 bg-neutral-900/50 overflow-hidden hover:border-[#A6E93A] transition-all duration-300 p-5 sm:p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-11 h-11 sm:w-14 sm:h-14 rounded-[14px] sm:rounded-[20px] bg-black border border-[#A6E93A]/30 flex items-center justify-center">
-                <i data-lucide="palette" class="w-5 h-5 sm:w-6 sm:h-6 neon-text"></i>
-              </div>
+
+        <!-- DOMAIN TABS -->
+        <div class="grid grid-cols-3 gap-2 sm:gap-4 mb-3 sm:mb-6">
+          <button onclick="showSkillDomain('creative')" data-skill-tab="creative"
+            class="skill-domain-tab active rounded-[14px] sm:rounded-[20px] border border-[#A6E93A] bg-[#A6E93A]/10 p-3 sm:p-5 text-center transition-all">
+            <i data-lucide="palette" class="w-5 h-5 sm:w-7 sm:h-7 neon-text mx-auto mb-1.5 sm:mb-3"></i>
+            <h3 class="text-[13px] sm:text-xl font-medium uppercase tracking-tight">Creative</h3>
+            <p class="text-[9px] sm:text-xs text-neutral-400 uppercase tracking-wide mt-0.5">Brand & Ads</p>
+          </button>
+
+          <button onclick="showSkillDomain('management')" data-skill-tab="management"
+            class="skill-domain-tab rounded-[14px] sm:rounded-[20px] border border-neutral-800 bg-neutral-900/50 p-3 sm:p-5 text-center transition-all">
+            <i data-lucide="briefcase" class="w-5 h-5 sm:w-7 sm:h-7 neon-text mx-auto mb-1.5 sm:mb-3"></i>
+            <h3 class="text-[13px] sm:text-xl font-medium uppercase tracking-tight">Manage</h3>
+            <p class="text-[9px] sm:text-xs text-neutral-400 uppercase tracking-wide mt-0.5">People & Biz</p>
+          </button>
+
+          <button onclick="showSkillDomain('analytics')" data-skill-tab="analytics"
+            class="skill-domain-tab rounded-[14px] sm:rounded-[20px] border border-neutral-800 bg-neutral-900/50 p-3 sm:p-5 text-center transition-all">
+            <i data-lucide="bar-chart-3" class="w-5 h-5 sm:w-7 sm:h-7 neon-text mx-auto mb-1.5 sm:mb-3"></i>
+            <h3 class="text-[13px] sm:text-xl font-medium uppercase tracking-tight">Analyze</h3>
+            <p class="text-[9px] sm:text-xs text-neutral-400 uppercase tracking-wide mt-0.5">Data & Money</p>
+          </button>
+        </div>
+
+        <!-- SKILLS LIST -->
+        <div class="rounded-[18px] sm:rounded-[26px] border border-neutral-800 bg-neutral-900/40 p-3 sm:p-6">
+          <div id="creativeSkills" class="skill-domain-panel">
+            <div class="flex items-center justify-between gap-3 mb-3 sm:mb-5">
               <div>
-                <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase">Creative</h3><span
-                  class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">Digital Marketing, Design &
-                  Branding</span>
+                <h3 class="text-lg sm:text-2xl font-medium tracking-tight uppercase">Creative Skills</h3>
+                <p class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">Marketing, content and brand
+                  building</p>
               </div>
+              <span
+                class="rounded-full border border-[#A6E93A]/30 bg-[#A6E93A]/10 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider neon-text">
+                Active
+              </span>
             </div>
-            <p class="text-neutral-400 text-sm font-light mb-4 sm:mb-6 leading-relaxed"><span class="md:hidden">Crafting
-                campaigns, building brands & making content that converts.</span><span class="hidden md:inline">The
-                creative engine — digital marketing, social media strategy, brand identity, content creation, paid ads,
-                and design. Everything that makes a brand show up and stand out online.</span></p>
-            <div class="space-y-3">
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="megaphone"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Digital & Social Media
-                      Marketing</h4>
-                  </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+              <div class="skill-card rounded-[12px] border border-[#A6E93A]/25 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="megaphone"
+                    class="w-4 h-4 text-[#A6E93A]"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Digital Marketing</span>
                 </div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="pen-tool"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Graphic Design & Branding</h4>
-                  </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="share-2"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Social Media Strategy</span>
                 </div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="target"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Meta Ads & Campaign Strategy
-                    </h4>
-                  </div>
-                </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="pen-tool"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Graphic Design</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><img src="./assets/images/meta.png" alt="Meta"
+                    class="w-4 h-4 object-contain opacity-60" style="filter: brightness(0) invert(1);"><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Meta</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="sparkles"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Brand Identity</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="video"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Content Planning</span></div>
               </div>
             </div>
           </div>
-          <!-- MANAGEMENT DOMAIN -->
-          <div
-            class="relative group rounded-[20px] sm:rounded-[30px] border border-neutral-800 bg-neutral-900/50 overflow-hidden hover:border-[#A6E93A] transition-all duration-300 p-5 sm:p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-11 h-11 sm:w-14 sm:h-14 rounded-[14px] sm:rounded-[20px] bg-black border border-neutral-800 flex items-center justify-center">
-                <i data-lucide="briefcase" class="w-5 h-5 sm:w-6 sm:h-6 neon-text"></i>
-              </div>
+
+          <div id="managementSkills" class="skill-domain-panel hidden">
+            <div class="flex items-center justify-between gap-3 mb-3 sm:mb-5">
               <div>
-                <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase">Management</h3><span
-                  class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">& Business Strategy</span>
+                <h3 class="text-lg sm:text-2xl font-medium tracking-tight uppercase">Management Skills</h3>
+                <p class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">People, process and business
+                  thinking</p>
               </div>
+              <span
+                class="rounded-full border border-[#A6E93A]/30 bg-[#A6E93A]/10 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider neon-text">
+                Strategy
+              </span>
             </div>
-            <p class="text-neutral-400 text-sm font-light mb-4 sm:mb-6 leading-relaxed"><span class="md:hidden">People
-                drive growth, processes drive clarity.</span><span class="hidden md:inline">The strategic side — people
-                drive growth, processes drive clarity, structure drives results.</span></p>
-            <div class="space-y-3">
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="users"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Human Resource</h4>
-                  </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+              <div class="skill-card rounded-[12px] border border-[#A6E93A]/25 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="users"
+                    class="w-4 h-4 text-[#A6E93A]"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Human Resource</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="clipboard-check"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Business Analysis</span>
                 </div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="clipboard-check"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Business Analysis</h4>
-                  </div>
-                </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="message-square"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Communication</span></div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="file-spreadsheet"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Office Productivity</h4>
-                  </div>
-                </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="calendar-check"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Coordination</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="workflow"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Process Planning</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="file-spreadsheet"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Office Tools</span></div>
               </div>
             </div>
           </div>
-          <!-- ANALYTICS DOMAIN -->
-          <div
-            class="relative group rounded-[20px] sm:rounded-[30px] border border-neutral-800 bg-neutral-900/50 overflow-hidden hover:border-[#A6E93A] transition-all duration-300 md:col-span-2 lg:col-span-1 p-5 sm:p-6">
-            <div class="flex items-center gap-3 mb-4">
-              <div
-                class="w-11 h-11 sm:w-14 sm:h-14 rounded-[14px] sm:rounded-[20px] bg-black border border-neutral-800 flex items-center justify-center">
-                <i data-lucide="bar-chart-3" class="w-5 h-5 sm:w-6 sm:h-6 neon-text"></i>
-              </div>
+
+          <div id="analyticsSkills" class="skill-domain-panel hidden">
+            <div class="flex items-center justify-between gap-3 mb-3 sm:mb-5">
               <div>
-                <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase">Analytics</h3><span
-                  class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">& Financial Insight</span>
+                <h3 class="text-lg sm:text-2xl font-medium tracking-tight uppercase">Analytics Skills</h3>
+                <p class="text-[10px] sm:text-xs text-neutral-500 uppercase tracking-wider">Data, dashboards and
+                  financial insight</p>
               </div>
+              <span
+                class="rounded-full border border-[#A6E93A]/30 bg-[#A6E93A]/10 px-3 py-1 text-[10px] sm:text-xs font-semibold uppercase tracking-wider neon-text">
+                Insight
+              </span>
             </div>
-            <p class="text-neutral-400 text-sm font-light mb-4 sm:mb-6 leading-relaxed"><span class="md:hidden">Data
-                tells stories, dashboards drive decisions.</span><span class="hidden md:inline">The quantitative side —
-                data tells stories, models reveal value, dashboards drive decisions.</span></p>
-            <div class="space-y-3">
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="database"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Data Analysis</h4>
-                  </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-2 sm:gap-3">
+              <div class="skill-card rounded-[12px] border border-[#A6E93A]/25 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="database"
+                    class="w-4 h-4 text-[#A6E93A]"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Data Analysis</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="table"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Excel</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="layout-dashboard"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Power BI</span></div>
+              </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="trending-up"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Financial Analysis</span>
                 </div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="trending-up"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Financial Analysis</h4>
-                  </div>
-                </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="pie-chart"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Dashboard Design</span></div>
               </div>
-              <div class="skill-card p-4 rounded-[16px] border border-neutral-800 bg-black">
-                <div class="flex items-start gap-3 relative z-10 skill-inner"><i data-lucide="table"
-                    class="w-5 h-5 mt-1 skill-icon text-neutral-400 flex-shrink-0"></i>
-                  <div class="flex-1 min-w-0">
-                    <h4 class="font-medium tracking-tight uppercase text-base sm:text-lg">Excel & Power BI</h4>
-                  </div>
-                </div>
+              <div class="skill-card rounded-[12px] border border-neutral-800 bg-black p-2.5 sm:p-4">
+                <div class="relative z-10 flex items-center gap-2"><i data-lucide="search-check"
+                    class="w-4 h-4 text-neutral-400"></i><span
+                    class="text-[11px] sm:text-base font-semibold uppercase leading-tight">Research</span></div>
               </div>
             </div>
           </div>
         </div>
+
+        <!-- ROAMING SKILLS CREATURE -->
+        <div
+          class="skills-roam-arena mt-3 sm:mt-6 rounded-[18px] sm:rounded-[24px] border border-[#A6E93A]/20 bg-[#A6E93A]/5 overflow-hidden">
+          <div class="flex items-center justify-between gap-3 px-4 pt-4 sm:px-6 sm:pt-5">
+            <div>
+              <h3 class="text-lg sm:text-2xl font-medium tracking-tight uppercase">Skills In Motion</h3>
+              <p id="skillsCreatureMood" class="text-neutral-400 text-xs sm:text-sm font-light mt-1">
+                Jack of All Trades. Master of Fun.
+              </p>
+            </div>
+
+            <button onclick="petSkillsCreature()"
+              class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-black border border-[#A6E93A]/30 flex items-center justify-center hover:bg-[#A6E93A] hover:text-black transition-colors">
+              <i data-lucide="sparkles" class="w-5 h-5"></i>
+            </button>
+          </div>
+
+          <div class="skills-roam-track">
+            <div id="skillsCreature" class="skills-roaming-creature" onclick="petSkillsCreature()">
+              <svg width="76" height="64" viewBox="0 0 76 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 27 L21 7 L27 26" fill="#A6E93A" stroke="#7cb82e" stroke-width="1" />
+                <path d="M20 25 L22 13 L25 25" fill="#5a8c1a" opacity="0.55" />
+
+                <path d="M49 26 L55 7 L61 28" fill="#A6E93A" stroke="#7cb82e" stroke-width="1" />
+                <path d="M52 25 L55 13 L58 26" fill="#5a8c1a" opacity="0.55" />
+
+                <ellipse cx="39" cy="39" rx="24" ry="19" fill="#A6E93A" />
+                <ellipse cx="39" cy="42" rx="17" ry="12" fill="#8ed12a" opacity="0.5" />
+
+                <g class="skills-creature-eye">
+                  <ellipse cx="31" cy="36" rx="4" ry="5" fill="#111" />
+                  <circle cx="32.5" cy="34" r="1.3" fill="#fff" />
+                </g>
+
+                <g class="skills-creature-eye">
+                  <ellipse cx="48" cy="36" rx="4" ry="5" fill="#111" />
+                  <circle cx="49.5" cy="34" r="1.3" fill="#fff" />
+                </g>
+
+                <ellipse cx="25" cy="42" rx="4" ry="2.5" fill="#ff9eb1" opacity="0.45" />
+                <ellipse cx="53" cy="42" rx="4" ry="2.5" fill="#ff9eb1" opacity="0.45" />
+
+                <ellipse cx="39" cy="41" rx="2" ry="1.3" fill="#5a8c1a" />
+                <path d="M35 44 Q39 48 43 44" stroke="#111" stroke-width="1.2" fill="none" stroke-linecap="round" />
+
+
+
+                <path d="M16 47 Q7 42 10 35 Q12 31 7 28" stroke="#A6E93A" stroke-width="2" fill="none"
+                  stroke-linecap="round" />
+              </svg>
+            </div>
+
+            <div class="skills-roam-chip skills-roam-chip-one">Looks Interesting</div>
+            <div class="skills-roam-chip skills-roam-chip-two">Build</div>
+            <div class="skills-roam-chip skills-roam-chip-three">Learn</div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </div>
   <!-- ==================== RESUME PAGE ==================== -->
   <div id="resumePage" class="page">
-    <div class="pt-24 pb-12 relative overflow-hidden">
+    <div class="pt-20 sm:pt-24 pb-28 md:pb-12 relative overflow-hidden">
       <div class="max-w-7xl mx-auto px-4 sm:px-6 relative z-10">
         <button onclick="navigateTo('mainPage')"
-          class="mb-6 flex items-center gap-2 text-sm text-neutral-400 hover:text-[#A6E93A] transition-colors"><i
-            data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home</button>
-        <div class="text-center mb-8 sm:mb-12">
+          class="mb-3 sm:mb-6 flex items-center gap-2 text-xs sm:text-sm text-neutral-400 hover:text-[#A6E93A] transition-colors">
+          <i data-lucide="arrow-left" class="w-4 h-4"></i> Back to Home
+        </button>
+
+        <div class="text-center mb-4 sm:mb-10">
           <span class="text-[10px] sm:text-xs font-semibold uppercase tracking-widest neon-text">Education &amp;
             Experience</span>
-          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight uppercase mt-2 sm:mt-3">
-            Resume Timeline</h2>
+          <h2 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-medium tracking-tight uppercase mt-1">
+            Resume Timeline
+          </h2>
+          <p class="text-neutral-400 text-xs sm:text-base font-light mt-1.5 sm:mt-3 max-w-2xl mx-auto leading-relaxed">
+            Work, education and key highlights in one quick scan.
+          </p>
         </div>
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12">
-          <!-- EDUCATION -->
-          <div>
-            <div class="flex items-center gap-3 mb-6">
-              <div
-                class="w-10 h-10 sm:w-12 sm:h-12 rounded-[14px] bg-black border border-neutral-800 flex items-center justify-center">
-                <i data-lucide="graduation-cap" class="w-4 h-4 sm:w-5 sm:h-5 neon-text"></i>
-              </div>
-              <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase">Education</h3>
+
+        <!-- MOBILE COMPACT OVERVIEW -->
+        <div class="lg:hidden space-y-3">
+          <div class="grid grid-cols-3 gap-2">
+            <div class="rounded-[12px] border border-neutral-800 bg-neutral-900/50 p-2.5 text-center">
+              <i data-lucide="graduation-cap" class="w-4 h-4 neon-text mx-auto mb-1"></i>
+              <p class="text-[10px] font-semibold uppercase leading-tight">BBA(H)</p>
+              <p class="text-[8px] text-neutral-500 uppercase">2025</p>
             </div>
-            <div class="space-y-5 sm:space-y-6 relative pl-6 sm:pl-8 border-l border-neutral-800">
-              <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
-                <div
-                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">2022 —
-                    2025</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">Techno India University,
-                    Salt Lake</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">BBA(H) — marketing, finance, HR toolkit.</span><span
-                      class="hidden md:inline">BBA(H) from TIU — got the full business management toolkit: marketing,
-                      finance, HR, and everything in between.</span></p>
-                </div>
+
+            <div class="rounded-[12px] border border-[#A6E93A]/30 bg-[#A6E93A]/10 p-2.5 text-center">
+              <i data-lucide="briefcase" class="w-4 h-4 neon-text mx-auto mb-1"></i>
+              <p class="text-[10px] font-semibold uppercase leading-tight">Current</p>
+              <p class="text-[8px] text-neutral-500 uppercase">Social Media</p>
+            </div>
+
+            <div class="rounded-[12px] border border-neutral-800 bg-neutral-900/50 p-2.5 text-center">
+              <i data-lucide="sparkles" class="w-4 h-4 neon-text mx-auto mb-1"></i>
+              <p class="text-[10px] font-semibold uppercase leading-tight">Learn</p>
+              <p class="text-[8px] text-neutral-500 uppercase">Then Create</p>
+            </div>
+          </div>
+
+          <div class="rounded-[16px] border border-[#A6E93A]/25 bg-[#A6E93A]/5 p-3">
+            <div class="flex items-center justify-between gap-3 mb-2">
+              <div>
+                <h3 class="text-base font-medium uppercase tracking-tight">Experience</h3>
+                <p class="text-[10px] text-neutral-500 uppercase tracking-wider">Latest first</p>
               </div>
-              <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
-                <div
-                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">2014 —
-                    2022</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">Army Public School,
-                    Barrackpore</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">Built a rock-solid academic base & discipline.</span><span
-                      class="hidden md:inline">Upper primary through senior secondary at APS BKP — built a rock-solid
-                      academic base and the discipline to back it up.</span></p>
+              <span
+                class="px-2.5 py-1 rounded-full bg-[#A6E93A]/10 border border-[#A6E93A]/25 text-[9px] neon-text font-semibold uppercase tracking-wider">
+                Active
+              </span>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2">
+              <!-- Current role: always visible -->
+              <div class="rounded-[12px] border border-[#A6E93A]/20 bg-black p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h4 class="text-sm font-semibold uppercase tracking-tight">Social Media Manager</h4>
+                  <span class="text-[8px] neon-text font-semibold uppercase whitespace-nowrap">Jan 2026 - Current</span>
                 </div>
+                <p class="text-[9px] neon-text font-semibold uppercase mt-1">CrispWisp Tales</p>
+                <p class="text-[11px] text-neutral-400 mt-1 leading-relaxed">
+                  Managed social media content, brand communication, audience engagement, and campaign support across
+                  <span class="text-white font-medium">Adamas United Sports</span>,
+                  <span class="text-white font-medium">Dream League of India</span>,
+                  <span class="text-white font-medium">Bengal T20 League</span>, and
+                  <span class="text-white font-medium">N10 Sports</span>.
+                </p>
               </div>
+
+              <!-- One smooth dropdown for both past works -->
               <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
-                <div
-                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">2010 —
-                    2014</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">Army Public School,
-                    Ahmednagar</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">Where it all started — primary education.</span><span
-                      class="hidden md:inline">Where it all started — primary education that sparked a love for learning
-                      and set the foundation for everything since.</span></p>
+                <input type="checkbox" id="pastWorksToggle" class="mobile-resume-toggle">
+
+                <label for="pastWorksToggle"
+                  class="past-works-card block cursor-pointer rounded-[12px] border border-neutral-800 bg-black p-3">
+                  <div class="flex items-start justify-between gap-3">
+                    <div>
+                      <h4 class="text-sm font-semibold uppercase tracking-tight">Past Works</h4>
+                      <p class="text-[9px] neon-text font-semibold uppercase mt-1">2022 - 2024</p>
+                      <p class="resume-preview text-[10px] text-neutral-400 mt-1 leading-relaxed">
+                        From ideas to execution— handled operations, digital growth, people management, and startup
+                        execution.
+                      </p>
+                    </div>
+                    <i data-lucide="chevron-down" class="resume-open-icon w-4 h-4 neon-text flex-shrink-0 mt-1"></i>
+                  </div>
+
+                  <div class="resume-dropdown-content">
+                    <div class="grid grid-cols-1 gap-2 mt-3">
+                      <div class="rounded-[10px] border border-neutral-800 bg-neutral-950/70 p-3">
+                        <div class="flex items-center justify-between gap-2">
+                          <h5 class="text-xs font-semibold uppercase tracking-tight">HR Intern</h5>
+                          <span class="text-[8px] neon-text font-semibold uppercase whitespace-nowrap">May 2024 - Jun
+                            2024</span>
+                        </div>
+                        <p class="text-[9px] neon-text font-semibold uppercase mt-1">CollegeTips.in</p>
+                        <p class="text-[10px] text-neutral-400 mt-1 leading-relaxed">
+                          Supported recruitment coordination, candidate communication, interview scheduling, and daily
+                          HR operations.
+                        </p>
+                      </div>
+
+                      <div class="rounded-[10px] border border-neutral-800 bg-neutral-950/70 p-3">
+                        <div class="flex items-center justify-between gap-2">
+                          <h5 class="text-xs font-semibold uppercase tracking-tight">Startup Project Associate</h5>
+                          <span class="text-[8px] neon-text font-semibold uppercase whitespace-nowrap">Aug 2022 - Jan
+                            2024</span>
+                        </div>
+                        <p class="text-[9px] neon-text font-semibold uppercase mt-1">FitHub Wellness Community</p>
+                        <p class="text-[10px] text-neutral-400 mt-1 leading-relaxed">
+                          Contributed to a startup-stage wellness platform through website support, content updates,
+                          SEO improvements, project coordination, and overall digital presence development.
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="rounded-[16px] border border-neutral-800 bg-neutral-900/40 p-3">
+            <div class="flex items-center justify-between gap-3 mb-2">
+              <div>
+                <h3 class="text-base font-medium uppercase tracking-tight">Education</h3>
+                <p class="text-[10px] text-neutral-500 uppercase tracking-wider">Academic base</p>
+              </div>
+              <i data-lucide="graduation-cap" class="w-5 h-5 neon-text"></i>
+            </div>
+
+            <div class="grid grid-cols-1 gap-2">
+              <div class="rounded-[12px] border border-[#A6E93A]/20 bg-black p-3">
+                <div class="flex items-center justify-between gap-2">
+                  <h4 class="text-sm font-semibold uppercase tracking-tight">Techno India University</h4>
+                  <span class="text-[8px] neon-text font-semibold uppercase whitespace-nowrap">2022 - 2025</span>
+                </div>
+                <p class="text-[11px] text-neutral-400 mt-1">BBA(H): Marketing, Finance and HR.</p>
+              </div>
+
+              <div class="grid grid-cols-2 gap-2">
+                <div class="rounded-[12px] border border-neutral-800 bg-black p-3">
+                  <h4 class="text-xs font-semibold uppercase tracking-tight">APS Barrackpore</h4>
+                  <p class="text-[9px] neon-text font-semibold uppercase mt-1">2014 - 2022</p>
+                  <p class="text-[10px] text-neutral-400 mt-1">Academic base.</p>
+                </div>
+
+                <div class="rounded-[12px] border border-neutral-800 bg-black p-3">
+                  <h4 class="text-xs font-semibold uppercase tracking-tight">APS Ahmednagar</h4>
+                  <p class="text-[9px] neon-text font-semibold uppercase mt-1">2010 - 2014</p>
+                  <p class="text-[10px] text-neutral-400 mt-1">Started learning.</p>
                 </div>
               </div>
             </div>
           </div>
-          <!-- EXPERIENCE -->
-          <div>
-            <div class="flex items-center gap-3 mb-6">
+
+          <a href="./assets/images/CV.pdf" target="_blank" rel="noopener noreferrer"
+            class="block rounded-[16px] border border-[#A6E93A]/30 bg-[#A6E93A]/5 p-3">
+            <div class="flex items-center gap-3">
               <div
-                class="w-10 h-10 sm:w-12 sm:h-12 rounded-[14px] bg-black border border-neutral-800 flex items-center justify-center">
-                <i data-lucide="briefcase" class="w-4 h-4 sm:w-5 sm:h-5 neon-text"></i>
+                class="w-10 h-10 rounded-[12px] bg-black border border-neutral-800 flex items-center justify-center flex-shrink-0">
+                <i data-lucide="file-text" class="w-4 h-4 neon-text"></i>
               </div>
-              <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase">Experience</h3>
+              <div class="flex-1 min-w-0">
+                <h4 class="text-sm font-medium tracking-tight uppercase">Full Resume / CV</h4>
+                <p class="text-neutral-400 text-[10px] font-light">View or download complete CV</p>
+              </div>
+              <i data-lucide="external-link" class="w-4 h-4 neon-text flex-shrink-0"></i>
             </div>
-            <div class="space-y-5 sm:space-y-6 relative pl-6 sm:pl-8 border-l border-neutral-800">
-              <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
-                <div
-                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">May 2024 — Jun
-                    2024</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">HR Intern</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">HR internship at <span class="text-[#ceb15a] font-medium">CollegeTips.in</span>
-                      — recruitment & coordination.</span><span class="hidden md:inline">30-day HR internship at <span
-                        class="text-[#ceb15a] font-medium">CollegeTips.in</span> — recruitment, interview coordination,
-                      candidate management. Recognized for punctuality, dedication, and curiosity.</span></p>
-                </div>
+          </a>
+        </div>
+
+        <!-- DESKTOP ORIGINAL-STYLE TIMELINE -->
+        <div class="hidden lg:grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12">
+          <!-- EXPERIENCE LEFT -->
+          <div class="order-1">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-[14px] bg-black border border-neutral-800 flex items-center justify-center">
+                <i data-lucide="briefcase" class="w-5 h-5 neon-text"></i>
               </div>
+              <h3 class="text-2xl font-medium tracking-tight uppercase">Experience</h3>
+            </div>
+
+            <div class="space-y-6 relative pl-8 border-l border-neutral-800">
               <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
+                <div class="timeline-dot absolute -left-[40px] top-1"></div>
                 <div
-                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">Aug 2022 — Feb
-                    2024</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">Web Dev Intern</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">Web developer at <span class="text-[#ceb15a] font-medium">Fithub</span> —
-                      design, SEO, optimization.</span><span class="hidden md:inline">Web developer at <span
-                        class="text-[#ceb15a] font-medium">Fithub Wellness Community.</span> Responsive design,
-                      cross-browser compatibility, e-commerce, SEO, performance optimization — wore all the hats.</span>
+                  class="p-4 rounded-[16px] border border-[#A6E93A]/20 bg-[#A6E93A]/5 hover:border-[#A6E93A] transition-colors">
+                  <span class="text-xs neon-text font-semibold uppercase tracking-wider">January 2026 - Current</span>
+                  <h4 class="text-xl font-medium tracking-tight uppercase mt-1">Social Media Manager</h4>
+                  <p class="text-[11px] neon-text font-semibold uppercase mt-1">CrispWisp Tales</p>
+                  <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">
+                    Managed social media content, brand communication, audience engagement, and campaign support across
+                    Adamas United Sports, Dream League of India, Bengal T20 League, and N10 Sports.
                   </p>
                 </div>
               </div>
+
               <div class="relative">
-                <div class="timeline-dot absolute -left-[31px] sm:-left-[40px] top-1"></div>
+                <div class="timeline-dot absolute -left-[40px] top-1"></div>
+
+                <input type="checkbox" id="desktopPastWorksToggle" class="mobile-resume-toggle">
+
+                <label for="desktopPastWorksToggle"
+                  class="past-works-card block cursor-pointer p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
+
+                  <div class="flex items-start justify-between gap-4">
+                    <div>
+                      <span class="text-xs neon-text font-semibold uppercase tracking-wider">2022 - 2024</span>
+                      <h4 class="text-xl font-medium tracking-tight uppercase mt-1">Past Works</h4>
+                      <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed resume-preview">
+                        From ideas to execution—handled operations, digital growth, people management, and startup
+                        execution.
+                      </p>
+                    </div>
+
+                    <i data-lucide="chevron-down" class="resume-open-icon w-5 h-5 neon-text flex-shrink-0 mt-1"></i>
+                  </div>
+
+                  <div class="resume-dropdown-content mt-5 space-y-4">
+
+                    <div class="rounded-[14px] border border-neutral-800 bg-black/40 p-4">
+                      <span class="text-xs neon-text font-semibold uppercase tracking-wider">
+                        May 2024 - Jun 2024
+                      </span>
+
+                      <h5 class="text-lg font-medium tracking-tight uppercase mt-1">
+                        HR Intern
+                      </h5>
+
+                      <p class="text-[11px] neon-text font-semibold uppercase mt-1">
+                        CollegeTips.in
+                      </p>
+
+                      <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">
+                        Supported recruitment coordination, candidate communication,
+                        interview scheduling, and daily HR operations.
+                      </p>
+                    </div>
+
+                    <div class="rounded-[14px] border border-neutral-800 bg-black/40 p-4">
+                      <span class="text-xs neon-text font-semibold uppercase tracking-wider">
+                        Aug 2022 - Jan 2024
+                      </span>
+
+                      <h5 class="text-lg font-medium tracking-tight uppercase mt-1">
+                        Startup Project Associate
+                      </h5>
+
+                      <p class="text-[11px] neon-text font-semibold uppercase mt-1">
+                        FitHub Wellness Community
+                      </p>
+
+                      <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">
+                        Contributed to a startup-stage wellness platform through website support,
+                        content updates, SEO improvements, project coordination, and overall
+                        digital presence development.
+                      </p>
+                    </div>
+
+                  </div>
+
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- EDUCATION RIGHT -->
+          <div class="order-2">
+            <div class="flex items-center gap-3 mb-6">
+              <div class="w-12 h-12 rounded-[14px] bg-black border border-neutral-800 flex items-center justify-center">
+                <i data-lucide="graduation-cap" class="w-5 h-5 neon-text"></i>
+              </div>
+              <h3 class="text-2xl font-medium tracking-tight uppercase">Education</h3>
+            </div>
+
+            <div class="space-y-6 relative pl-8 border-l border-neutral-800">
+              <div class="relative">
+                <div class="timeline-dot absolute -left-[40px] top-1"></div>
                 <div
-                  class="p-4 rounded-[16px] border border-[#A6E93A]/20 bg-[#A6E93A]/5 hover:border-[#A6E93A] transition-colors">
-                  <span class="text-[10px] sm:text-xs neon-text font-semibold uppercase tracking-wider">Social Media
-                    Manager</span>
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase mt-1">CrispWisp Tales</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-2 leading-relaxed"><span
-                      class="md:hidden">Ran socials for <span class="text-[#ceb15a] font-medium">CrispWisp</span> &amp;
-                      <span class="neon-text font-medium">Adamas Warriors</span>.</span><span
-                      class="hidden md:inline">Ran social media for <span class="text-[#ceb15a] font-medium">CrispWisp
-                        Tales</span> — content strategy, brand voice, audience engagement. Also worked with <span
-                        class="text-[#ceb15a] font-medium">Adamas United Sports</span>, handling the franchisee <span
-                        class="neon-text font-medium">Adamas Howrah Warriors</span> team of the Bengal T20
-                      League.</span></p>
+                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
+                  <span class="text-xs neon-text font-semibold uppercase tracking-wider">2022 - 2025</span>
+                  <h4 class="text-xl font-medium tracking-tight uppercase mt-1">Techno India University, Salt Lake</h4>
+                  <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">BBA(H) from TIU - marketing,
+                    finance, HR and everything in between.</p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="timeline-dot absolute -left-[40px] top-1"></div>
+                <div
+                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
+                  <span class="text-xs neon-text font-semibold uppercase tracking-wider">2014 - 2022</span>
+                  <h4 class="text-xl font-medium tracking-tight uppercase mt-1">Army Public School, Barrackpore</h4>
+                  <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">Built a strong academic base and
+                    discipline.</p>
+                </div>
+              </div>
+
+              <div class="relative">
+                <div class="timeline-dot absolute -left-[40px] top-1"></div>
+                <div
+                  class="p-4 rounded-[16px] border border-neutral-800 bg-neutral-900/30 hover:border-[#A6E93A] transition-colors">
+                  <span class="text-xs neon-text font-semibold uppercase tracking-wider">2010 - 2014</span>
+                  <h4 class="text-xl font-medium tracking-tight uppercase mt-1">Army Public School, Ahmednagar</h4>
+                  <p class="text-neutral-400 text-sm font-light mt-2 leading-relaxed">Where the learning journey
+                    started.</p>
                 </div>
               </div>
             </div>
+          </div>
+
+          <!-- RESUME FULL WIDTH -->
+          <div class="order-3 lg:col-span-2">
             <a href="./assets/images/CV.pdf" target="_blank" rel="noopener noreferrer"
               class="mt-6 block p-4 rounded-[20px] border border-[#A6E93A]/30 bg-[#A6E93A]/5 hover:bg-[#A6E93A]/10 transition-colors group">
               <div class="flex items-center gap-4">
@@ -1111,11 +1614,11 @@
                   <i data-lucide="file-text" class="w-5 h-5 neon-text"></i>
                 </div>
                 <div class="flex-1 min-w-0">
-                  <h4 class="text-base sm:text-xl font-medium tracking-tight uppercase">Full Resume / CV</h4>
-                  <p class="text-neutral-400 text-xs sm:text-sm font-light mt-0.5">View or download complete CV</p>
+                  <h4 class="text-xl font-medium tracking-tight uppercase">Full Resume / CV</h4>
+                  <p class="text-neutral-400 text-sm font-light mt-0.5">View or download complete CV</p>
                 </div>
                 <i data-lucide="external-link"
-                  class="w-4 h-4 sm:w-5 sm:h-5 neon-text group-hover:translate-x-1 transition-transform flex-shrink-0"></i>
+                  class="w-5 h-5 neon-text group-hover:translate-x-1 transition-transform flex-shrink-0"></i>
               </div>
             </a>
           </div>
@@ -1576,6 +2079,199 @@
       });
     }
   </script>
+  <!-- ==================== MUSIC PLAYER ==================== -->
+  <audio id="bgMusic" src="./assets/images/Touch The Sky.mp3" loop preload="none"></audio>
+
+  <!-- Floating Music Button — fixed, visible on all screen sizes -->
+  <button id="musicToggleBtn" onclick="toggleMusic()" title="Play / Pause music" style="
+      position: fixed;
+      top: 70px;
+      right: 16px;
+      z-index: 9999;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #A6E93A;
+      border: none;
+      cursor: pointer;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 18px rgba(166,233,58,0.45), 0 4px 12px rgba(0,0,0,0.5);
+      transition: background 0.25s ease, transform 0.2s ease, box-shadow 0.25s ease;
+    " onmouseenter="this.style.background='#fff'; this.style.transform='scale(1.1)'"
+    onmouseleave="this.style.background='#A6E93A'; this.style.transform='scale(1)'">
+    <!-- Play icon (shown when paused) -->
+    <svg id="musicIconPlay" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"
+      style="width:20px;height:20px;display:block;">
+      <path d="M8 5v14l11-7z" />
+    </svg>
+    <!-- Pause icon (shown when playing) -->
+    <svg id="musicIconPause" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="black"
+      style="width:20px;height:20px;display:none;">
+      <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" />
+    </svg>
+  </button>
+
+  <style>
+    /* On desktop (md+), move button to bottom-right corner */
+    @media (min-width: 768px) {
+      #musicToggleBtn {
+        top: auto;
+        bottom: 32px;
+        right: 32px;
+        width: 52px;
+        height: 52px;
+      }
+    }
+
+    /* Pulse animation when playing */
+    @keyframes music-pulse {
+
+      0%,
+      100% {
+        box-shadow: 0 0 18px rgba(166, 233, 58, 0.45), 0 4px 12px rgba(0, 0, 0, 0.5);
+      }
+
+      50% {
+        box-shadow: 0 0 32px rgba(166, 233, 58, 0.75), 0 4px 16px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    #musicToggleBtn.playing {
+      animation: music-pulse 1.8s ease-in-out infinite;
+    }
+  </style>
+
+  <script>
+    // ===== MUSIC PLAYER =====
+    const bgMusic = document.getElementById('bgMusic');
+    const musicBtn = document.getElementById('musicToggleBtn');
+    const iconPlay = document.getElementById('musicIconPlay');
+    const iconPause = document.getElementById('musicIconPause');
+
+    function setMusicUI(isPlaying) {
+      iconPlay.style.display = isPlaying ? 'none' : 'block';
+      iconPause.style.display = isPlaying ? 'block' : 'none';
+      if (isPlaying) {
+        musicBtn.classList.add('playing');
+      } else {
+        musicBtn.classList.remove('playing');
+      }
+    }
+
+    function toggleMusic() {
+      if (bgMusic.paused) {
+        bgMusic.play().catch(() => { });
+        setMusicUI(true);
+      } else {
+        bgMusic.pause();
+        setMusicUI(false);
+      }
+    }
+
+    // Patch navigateTo to handle music on about page
+    const _origNavigateTo = navigateTo;
+    navigateTo = function (pageId) {
+      _origNavigateTo(pageId);
+      if (pageId === 'aboutPage') {
+        // Show button
+        musicBtn.style.display = 'flex';
+        // Start from 3 seconds every time the about page opens
+        bgMusic.currentTime = 2;
+        // Auto-play (the nav click counts as a user gesture)
+        bgMusic.play().then(() => {
+          setMusicUI(true);
+        }).catch(() => {
+          // Autoplay blocked — user can tap the button manually
+          setMusicUI(false);
+        });
+      } else {
+        // Hide button and pause when leaving about
+        musicBtn.style.display = 'none';
+        bgMusic.pause();
+        setMusicUI(false);
+      }
+    };
+
+
+    function showSkillDomain(domain) {
+      document.querySelectorAll('.skill-domain-panel').forEach(panel => {
+        panel.classList.add('hidden');
+      });
+
+      document.getElementById(domain + 'Skills').classList.remove('hidden');
+
+      document.querySelectorAll('.skill-domain-tab').forEach(tab => {
+        tab.classList.remove('active', 'border-[#A6E93A]', 'bg-[#A6E93A]/10');
+        tab.classList.add('border-neutral-800', 'bg-neutral-900/50');
+      });
+
+      const activeTab = document.querySelector(`[data-skill-tab="${domain}"]`);
+      activeTab.classList.add('active', 'border-[#A6E93A]', 'bg-[#A6E93A]/10');
+      activeTab.classList.remove('border-neutral-800', 'bg-neutral-900/50');
+
+      lucide.createIcons();
+    }
+
+    const skillsCreatureLines = [
+      'Found a shiny new tool. Must click.',
+      'Probably learning something unnecessary... again.',
+      'Collecting skills like Pokémon.',
+      'Brb, down another rabbit hole.',
+      'Turning caffeine into creative ideas.',
+      'Debugging life one tab at a time.',
+      'Looks interesting. Learning it.',
+      'Building random things that somehow work.',
+      '99 tabs open. Everything is under control.',
+      'Professionally curious since forever.',
+      'Just one more tutorial... promise.',
+      'Ctrl + Curiosity + Repeat.',
+      'Running on coffee and curiosity.',
+      'Making pixels, posts, and problems disappear.',
+      'Accidentally learning another skill.'
+    ];
+
+    let skillsCreatureIndex = 0;
+
+    function petSkillsCreature() {
+      const creature = document.getElementById('skillsCreature');
+      const mood = document.getElementById('skillsCreatureMood');
+
+      if (!creature || !mood) return;
+
+      creature.classList.add('caught');
+
+      skillsCreatureIndex = (skillsCreatureIndex + 1) % skillsCreatureLines.length;
+      mood.textContent = skillsCreatureLines[skillsCreatureIndex];
+
+      setTimeout(() => {
+        creature.classList.remove('caught');
+      }, 900);
+
+      lucide.createIcons();
+    }
+
+
+
+
+  </script>
+</body>
+
+</html>
+<!-- Blush cheeks -->
+<ellipse cx="15" cy="28" rx="3" ry="2" fill="#ff9eb1" opacity="0.45" />
+<ellipse cx="37" cy="28" rx="3" ry="2" fill="#ff9eb1" opacity="0.45" />
+<!-- Nose -->
+<ellipse cx="26" cy="28" rx="1.5" ry="1" fill="#7cb82e" />
+<!-- Smile -->
+<path d="M23 30 Q26 33 29 30" stroke="#111" stroke-width="0.8" fill="none" stroke-linecap="round" />
+<!-- Curly tail (no dot at end) -->
+<path d="M8 34 Q3 30 5 26 Q7 22 4 20" stroke="#A6E93A" stroke-width="1.5" fill="none" stroke-linecap="round" />
+</svg>
+</div>
+</div>
+
 </body>
 
 </html>
