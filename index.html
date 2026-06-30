@@ -790,10 +790,132 @@
       opacity: 1;
       transform: translateY(0);
     }
+
+    /* ===========================================
+    APPLE LIQUID GLASS MOBILE NAV
+    ===========================================*/
+
+    @media (max-width:767px) {
+      .liquid-nav {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+
+        padding: 8px 10px;
+
+        border-radius: 999px;
+
+        background: rgba(18, 18, 18, .55);
+
+        backdrop-filter: blur(28px) saturate(180%);
+        -webkit-backdrop-filter: blur(28px) saturate(180%);
+
+        border: 1px solid rgba(255, 255, 255, .08);
+
+        box-shadow:
+          0 10px 35px rgba(0, 0, 0, .45),
+          inset 0 1px 0 rgba(255, 255, 255, .12);
+
+      }
+
+      .liquid-item {
+
+        position: relative;
+
+        width: 48px;
+        height: 48px;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        border-radius: 999px;
+
+        color: #bcbcbc;
+
+        transition: .45s cubic-bezier(.22, 1, .36, 1);
+
+        overflow: hidden;
+
+        text-decoration: none;
+
+      }
+
+      .liquid-item::before {
+
+        content: "";
+
+        position: absolute;
+
+        left: 50%;
+        top: 50%;
+
+        width: 38px;
+        height: 38px;
+
+        transform: translate(-50%, -50%) scale(.65);
+
+        border-radius: 999px;
+
+        opacity: 0;
+
+        background:
+          linear-gradient(180deg,
+            rgba(255, 255, 255, .25),
+            rgba(255, 255, 255, .06));
+
+        backdrop-filter: blur(18px);
+
+        transition: .4s cubic-bezier(.22, 1, .36, 1);
+
+      }
+
+      .liquid-item.active {
+
+        color: #A6E93A;
+
+        transform: translateY(-2px);
+
+      }
+
+      .liquid-item.active::before {
+
+        opacity: 1;
+
+        transform: translate(-50%, -50%) scale(1);
+
+        box-shadow:
+
+          0 0 18px rgba(166, 233, 58, .18),
+
+          inset 0 1px 0 rgba(255, 255, 255, .25);
+
+      }
+
+      .liquid-item.active i {
+
+        transform: scale(1.08);
+
+        filter: drop-shadow(0 0 6px rgba(166, 233, 58, .45));
+
+      }
+
+    }
+
+    @media (max-width:767px) {
+      .apple-glass-strip {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 88px;
+        z-index: 9990;
+      }
+    }
   </style>
 </head>
 
-<body class="overflow-x-hidden pb-36 md:pb-0">
+<body class="overflow-x-hidden pb-56 md:pb-0">
   <!-- ========== NAVIGATION ========== -->
   <nav class="fixed top-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-md border-b border-neutral-800/50">
     <div
@@ -959,8 +1081,8 @@
         </div>
       </div>
     </section>
-    <!-- MARQUEE STRIP (Desktop Only) -->
-    <div class="border-y border-neutral-800 py-3 sm:py-4 overflow-hidden hidden md:block">
+    <!-- MARQUEE STRIP (Hidden) -->
+    <div class="hidden">
       <div class="marquee-track whitespace-nowrap">
         <span class="mx-4 sm:mx-6 text-xs sm:text-sm font-['Oswald'] uppercase tracking-widest text-neutral-500">Human
           Resource</span><span class="mx-2 sm:mx-3 neon-text">✦</span>
@@ -1843,7 +1965,7 @@
   </div>
   <!-- ==================== CONTACT PAGE ==================== -->
   <div id="contactPage" class="page">
-    <div class="pt-24 pb-24 md:pb-12 relative min-h-[80vh] flex items-center">
+    <div class="pt-16 md:pt-24 pb-28 md:pb-12 relative min-h-[80vh] flex items-center">
       <div class="max-w-3xl mx-auto px-4 sm:px-6 w-full">
         <button onclick="navigateTo('mainPage')"
           class="mb-6 flex items-center gap-2 text-sm text-neutral-400 hover:text-[#A6E93A] transition-colors"><i
@@ -1853,7 +1975,8 @@
           <h2 class="text-3xl sm:text-4xl md:text-5xl font-medium tracking-tight uppercase mt-2">Contact</h2>
         </div>
         <article class="contact-form">
-          <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase mb-4">Send a Message</h3>
+          <h3 class="text-xl sm:text-2xl font-medium tracking-tight uppercase mb-4 text-center lg:text-left">Send a
+            Message</h3>
           <!-- Web3Forms-enabled form -->
           <form action="https://api.web3forms.com/submit" method="POST" class="space-y-4" data-form id="contactForm">
             <input type="hidden" name="access_key" value="c4c2dd57-9e0a-4d8d-a495-fa23eddc233e">
@@ -1902,9 +2025,9 @@
     </div>
   </div>
   <!-- ==================== FIXED BOTTOM MOBILE NAV (Apple Glass Design) ==================== -->
-  <div class="fixed bottom-0 left-0 right-0 z-50 md:hidden">
+  <div class="fixed bottom-24 md:bottom-0 left-0 right-0 z-40">
     <!-- Marquee Strip (only on home page) -->
-    <div id="mobileStrip" class="apple-glass-strip mx-3 mb-2 rounded-2xl overflow-hidden strip-visible">
+    <div id="mobileStrip" class="apple-glass-strip rounded-none overflow-hidden strip-visible">
       <div class="py-2.5 marquee-track whitespace-nowrap">
         <span class="mx-3 text-[10px] font-['Oswald'] uppercase tracking-widest text-neutral-500">Human
           Resource</span><span class="mx-2 neon-text">✦</span>
@@ -1933,46 +2056,51 @@
           Analysis</span><span class="mx-2 neon-text">✦</span>
       </div>
     </div>
-    <!-- Apple Glass Nav Bar -->
-    <nav class="apple-glass-nav mx-3 mb-3 rounded-[28px]">
-      <div class="grid grid-cols-6 gap-1 px-2 py-2">
-        <a href="#" onclick="navigateTo('mainPage'); return false;" class="apple-nav-item bottom-nav-link active"
-          data-page="mainPage">
-          <i data-lucide="home" class="w-5 h-5"></i>
-          <span>Home</span>
+    <!-- MOBILE APPLE LIQUID GLASS NAV -->
+    <div class="md:hidden fixed bottom-3 left-1/2 -translate-x-1/2 w-full flex justify-center z-[9999] px-5">
+      <div class="liquid-nav">
+
+        <a href="#" onclick="navigateTo('mainPage');return false;" class="liquid-item active" data-page="mainPage">
+          <i data-lucide="house"></i>
         </a>
-        <a href="#" onclick="navigateTo('aboutPage'); return false;" class="apple-nav-item bottom-nav-link"
-          data-page="aboutPage">
-          <i data-lucide="user" class="w-5 h-5"></i>
-          <span>About</span>
+
+        <a href="#" onclick="navigateTo('aboutPage');return false;" class="liquid-item" data-page="aboutPage">
+          <i data-lucide="user"></i>
         </a>
-        <a href="#" onclick="navigateTo('skillsPage'); return false;" class="apple-nav-item bottom-nav-link"
-          data-page="skillsPage">
-          <i data-lucide="layers" class="w-5 h-5"></i>
-          <span>Skills</span>
+
+        <a href="#" onclick="navigateTo('skillsPage');return false;" class="liquid-item" data-page="skillsPage">
+          <i data-lucide="sparkles"></i>
         </a>
-        <a href="#" onclick="navigateTo('resumePage'); return false;" class="apple-nav-item bottom-nav-link"
-          data-page="resumePage">
-          <i data-lucide="briefcase" class="w-5 h-5"></i>
-          <span>Resume</span>
+
+        <a href="#" onclick="navigateTo('resumePage');return false;" class="liquid-item" data-page="resumePage">
+          <i data-lucide="file-text"></i>
         </a>
-        <a href="#" onclick="navigateTo('portfolioPage'); return false;" class="apple-nav-item bottom-nav-link"
-          data-page="portfolioPage">
-          <i data-lucide="grid" class="w-5 h-5"></i>
-          <span>Work</span>
+
+        <a href="#" onclick="navigateTo('portfolioPage');return false;" class="liquid-item" data-page="portfolioPage">
+          <i data-lucide="briefcase"></i>
         </a>
-        <a href="#" onclick="navigateTo('contactPage'); return false;" class="apple-nav-item bottom-nav-link"
-          data-page="contactPage">
-          <i data-lucide="mail" class="w-5 h-5"></i>
-          <span>Contact</span>
+
+        <a href="#" onclick="navigateTo('contactPage');return false;" class="liquid-item" data-page="contactPage">
+          <i data-lucide="mail"></i>
         </a>
+
       </div>
-    </nav>
+    </div>
   </div>
   <!-- ==================== SCRIPTS ==================== -->
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
+    function updateMobileNav(page) {
+      document.querySelectorAll(".liquid-item").forEach(item => {
+        item.classList.remove("active");
+      });
+      const active = document.querySelector(`.liquid-item[data-page="${page}"]`);
+      if (active) {
+        active.classList.add("active");
+      }
+    }
+
     // SPA Navigation Logic
     function navigateTo(pageId) {
       document.querySelectorAll('.page').forEach(page => {
@@ -1980,14 +2108,8 @@
       });
       document.getElementById(pageId).classList.add('active');
       window.scrollTo(0, 0);
-      // Update mobile bottom nav active state (Apple Glass Design)
-      document.querySelectorAll('.bottom-nav-link').forEach(link => {
-        if (link.getAttribute('data-page') === pageId) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
+
+      updateMobileNav(pageId);
       // Update desktop nav active state
       document.querySelectorAll('.desktop-nav-link').forEach(link => {
         if (link.getAttribute('data-desktop-page') === pageId) {
